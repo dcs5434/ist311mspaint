@@ -49,6 +49,7 @@ private Stroke stroke = new BasicStroke(
 private RenderingHints renderingHints;
 
 public JComponent getGui() {
+    
     if (gui==null) {
         Map<Key, Object> hintsMap = new HashMap<RenderingHints.Key,Object>();
         hintsMap.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -68,9 +69,27 @@ public JComponent getGui() {
         imageLabel.addMouseMotionListener(new ImageMouseMotionListener());
         imageLabel.addMouseListener(new ImageMouseListener());
         gui.add(imageScroll,BorderLayout.CENTER);
-
+        
         JToolBar tb = new JToolBar();
         tb.setFloatable(false);
+        
+        JButton openButton = new JButton("Open");
+        openButton.setMnemonic('l');
+        openButton.setToolTipText("Load file into canvas");
+        ActionListener openListener = new ActionListener(){
+         public void actionPerformed(ActionEvent arg0) {
+               
+             
+             
+            }
+        };
+            
+            
+        
+        openButton.addActionListener(openListener);
+        openButton.setIcon(new ImageIcon(colorSample));
+        tb.add(openButton); 
+        
         JButton colorButton = new JButton("Color");
         colorButton.setMnemonic('o');
         colorButton.setToolTipText("Choose a Color");
